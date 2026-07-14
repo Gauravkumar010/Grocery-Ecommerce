@@ -1,15 +1,15 @@
-// cleanup-addr-test2.js — TEMPORARY, delete after use
+// cleanup-wishlist-test.js — TEMPORARY, delete after use
 require('dotenv').config({ quiet: true });
 const mongoose = require('mongoose');
 const connectDB = require('./src/config/db');
 const User = require('./src/models/User.model');
-const Address = require('./src/models/Address.model');
+const Wishlist = require('./src/models/Wishlist.model');
 
 const run = async () => {
   await connectDB();
-  const user = await User.findOne({ email: 'addrroutetest2@example.com' });
+  const user = await User.findOne({ email: 'wishtest_route@example.com' });
   if (user) {
-    await Address.deleteMany({ user: user._id });
+    await Wishlist.deleteMany({ user: user._id });
     await User.findByIdAndDelete(user._id);
   }
   console.log('Cleanup complete.');
