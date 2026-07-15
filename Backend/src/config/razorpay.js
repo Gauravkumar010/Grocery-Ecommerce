@@ -37,7 +37,8 @@ const createRazorpayOrder = async (amountInRupees, receipt) => {
     const order = await razorpayInstance.orders.create(options);
     return order;
   } catch (error) {
-    logger.error(`Razorpay order creation failed: ${error.message}`);
+    const description = error?.error?.description || error.message || 'Unknown Razorpay error';
+    logger.error(`Razorpay order creation failed: ${description}`);
     throw error;
   }
 };

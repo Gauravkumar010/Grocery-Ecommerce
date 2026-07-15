@@ -109,13 +109,13 @@ app.use('/api/v1/subcategories', require('./routes/subcategory.routes'));
 app.use('/api/v1/products', require('./routes/product.routes'));
 app.use('/api/v1/cart', require('./routes/cart.routes'));
 app.use('/api/v1/wishlist', require('./routes/wishlist.routes'));
-// app.use('/api/v1/coupons', require('./routes/coupon.routes'));
-// app.use('/api/v1/orders', require('./routes/order.routes'));
-// app.use('/api/v1/payments', require('./routes/payment.routes'));
-// app.use('/api/v1/reviews', require('./routes/review.routes'));
-// app.use('/api/v1/banners', require('./routes/banner.routes'));
-// app.use('/api/v1/notifications', require('./routes/notification.routes'));
-// app.use('/api/v1/admin', require('./routes/admin.routes'));
+app.use('/api/v1/coupons', require('./routes/coupon.routes'));
+app.use('/api/v1/orders', require('./routes/order.routes'));
+app.use('/api/v1/payments', require('./routes/payment.routes'));
+app.use('/api/v1/reviews', require('./routes/review.routes'));
+app.use('/api/v1/banners', require('./routes/banner.routes'));
+app.use('/api/v1/notifications', require('./routes/notification.routes'));
+app.use('/api/v1/admin', require('./routes/admin.routes'));
 
 // =========================================
 // ERROR HANDLING (must be mounted LAST)
