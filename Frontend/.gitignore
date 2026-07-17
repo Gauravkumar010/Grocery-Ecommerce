@@ -1,25 +1,70 @@
+# =========================================
+# Dependencies
+# =========================================
+node_modules/
+package-lock.json.bak
+
+# =========================================
+# Environment Variables (NEVER COMMIT REAL SECRETS)
+# =========================================
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# =========================================
 # Logs
-logs
+# =========================================
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# =========================================
+# Uploaded Files (local dev uploads before Cloudinary)
+# =========================================
+uploads/*
+!uploads/.gitkeep
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# =========================================
+# OS Generated Files
+# =========================================
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
+# =========================================
+# Editor / IDE
+# =========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================================
+# Build / Cache
+# =========================================
+dist/
+build/
+.cache/
+.temp/
+.tmp/
+
+# =========================================
+# Testing / Coverage
+# =========================================
+coverage/
+.nyc_output/
+
+# =========================================
+# Misc
+# =========================================
+*.pem
+*.key
+.env.example.local
