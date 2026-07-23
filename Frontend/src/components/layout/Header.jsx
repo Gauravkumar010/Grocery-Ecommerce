@@ -6,12 +6,24 @@ import { FiShoppingCart, FiHeart, FiUser, FiSun, FiMoon, FiSearch } from 'react-
 import { useSelector } from 'react-redux';
 import useDarkMode from '../../hooks/useDarkMode';
 import useAuth from '../../hooks/useAuth';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const { isDark, toggle } = useDarkMode();
   const { user, isAuthenticated } = useAuth();
   const cartCount = useSelector((state) => state.cart.totalItems);
   const wishlistCount = useSelector((state) => state.wishlist.products.length);
+
+  const navigate = useNavigate();
+const [searchQuery, setSearchQuery] = useState('');
+
+const handleSearch = (e) => {
+  e.preventDefault();
+  if (searchQuery.trim()) {
+    navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+  }
+};
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm">
@@ -26,14 +38,16 @@ const Header = () => {
           </Link>
 
           {/* Search bar (visual placeholder — functional search wired later) */}
-          <div className="hidden md:flex flex-1 max-w-xl relative">
-            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
-            <input
-              type="text"
-              placeholder="Search for fruits, vegetables, snacks..."
-              className="input-field pl-10"
-            />
-          </div>
+       <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl relative">
+  <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+  <input
+    type="text"
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    placeholder="Search for fruits, vegetables, snacks..."
+    className="input-field pl-10"
+  />
+</form>
 
           {/* Right icons */}
           <div className="flex items-center gap-1 sm:gap-2">

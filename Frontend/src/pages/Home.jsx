@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts, fetchCategories } from '../redux/slices/productSlice';
 import ProductCard from '../components/product/ProductCard';
 import { ProductCardSkeleton } from '../components/common/Skeleton';
+import BannerCarousel from '../components/common/BannerCarousel';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,11 @@ const Home = () => {
   }, [dispatch]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    {/* Hero Banner */}
+    <div className="mb-10">
+      <BannerCarousel />
+    </div>
       {/* Categories */}
       <section className="mb-10">
         <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Shop by Category</h2>

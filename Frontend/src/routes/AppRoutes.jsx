@@ -1,13 +1,31 @@
 // src/routes/AppRoutes.jsx
 
-import { Routes, Route } from 'react-router-dom';
-import MainLayout from '../layouts/MainLayout';
-import AuthLayout from '../layouts/AuthLayout';
-import Home from '../pages/Home';
-import ProductDetails from '../pages/ProductDetails';
-import Login from '../pages/auth/Login';
-import Register from '../pages/auth/Register';
-import Cart from '../pages/Cart';
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "../layouts/MainLayout";
+import AuthLayout from "../layouts/AuthLayout";
+import Home from "../pages/Home";
+import ProductDetails from "../pages/ProductDetails";
+import Login from "../pages/auth/Login";
+import Register from "../pages/auth/Register";
+import Cart from "../pages/Cart";
+import Wishlist from "../pages/Wishlist";
+import Checkout from "../pages/Checkout";
+import OrderTracking from '../pages/OrderTracking';
+import Orders from '../pages/Orders';
+import Profile from '../pages/Profile';
+import Addresses from '../pages/Addresses';
+import SearchResults from '../pages/SearchResults';
+import CategoryPage from '../pages/CategoryPage';
+import AdminLayout from '../layouts/AdminLayout';
+import AdminRoute from './AdminRoute';
+import AdminDashboard from '../pages/admin/Dashboard';
+import AdminProducts from '../pages/admin/Products';
+import ProductForm from '../pages/admin/ProductForm';
+import AdminCategories from '../pages/admin/Categories';
+import AdminOrders from '../pages/admin/Orders';
+import AdminCustomers from '../pages/admin/Customers';
+import AdminCoupons from '../pages/admin/Coupons';
+import AdminBanners from '../pages/admin/Banners';
 
 const Placeholder = ({ title }) => (
   <div className="flex items-center justify-center py-24">
@@ -24,25 +42,50 @@ function AppRoutes() {
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/products/:slug" element={<ProductDetails />} />
-        <Route path="/category/:slug" element={<Placeholder title="Category" />} />
-        <Route path="/search" element={<Placeholder title="Search Results" />} />
+       <Route path="/category/:slug" element={<CategoryPage />} />
+       <Route path="/search" element={<SearchResults />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Placeholder title="Wishlist" />} />
-        <Route path="/checkout" element={<Placeholder title="Checkout" />} />
-        <Route path="/orders" element={<Placeholder title="Orders" />} />
-        <Route path="/orders/:orderNumber" element={<Placeholder title="Order Tracking" />} />
-        <Route path="/profile" element={<Placeholder title="Profile" />} />
-        <Route path="/addresses" element={<Placeholder title="Addresses" />} />
-        <Route path="*" element={<Placeholder title="404 - Page Not Found" />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/orders" element={<Orders />} />
+       <Route path="/orders/:orderNumber" element={<OrderTracking />} />
+        <Route path="/profile" element={<Profile />} />
+         <Route path="/addresses" element={<Addresses />} />
+        <Route
+          path="*"
+          element={<Placeholder title="404 - Page Not Found" />}
+        />
       </Route>
 
       <Route element={<AuthLayout />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<Placeholder title="Forgot Password" />} />
+        <Route
+          path="/forgot-password"
+          element={<Placeholder title="Forgot Password" />}
+        />
       </Route>
 
-      <Route path="/admin/*" element={<Placeholder title="Admin Dashboard" />} />
+     <Route
+  path="/admin"
+  element={
+    <AdminRoute>
+      <AdminLayout />
+    </AdminRoute>
+  }
+>
+  <Route index element={<AdminDashboard />} />
+  <Route path="products" element={<AdminProducts />} />
+<Route path="products/new" element={<ProductForm />} />
+<Route path="products/edit/:id" element={<ProductForm />} />
+ <Route path="categories" element={<AdminCategories />} />
+<Route path="orders" element={<AdminOrders />} />
+<Route path="customers" element={<AdminCustomers />} />
+ <Route path="coupons" element={<AdminCoupons />} />
+<Route path="banners" element={<AdminBanners />} />
+  <Route path="analytics" element={<Placeholder title="Analytics" />} />
+</Route>
+
     </Routes>
   );
 }
