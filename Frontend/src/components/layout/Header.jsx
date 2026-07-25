@@ -31,7 +31,7 @@ const handleSearch = (e) => {
         <div className="flex items-center justify-between h-16 gap-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 shrink-0">
-            <span className="text-2xl font-extrabold text-primary-600">Grocery</span>
+            <span className="text-2xl font-extrabold text-primary-600">FreshKart</span>
             <span className="hidden xs:inline text-xs font-semibold bg-accent-100 text-accent-700 px-2 py-0.5 rounded-full">
               10 min
             </span>
